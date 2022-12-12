@@ -1,7 +1,6 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
-    systemversion "latest"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -10,8 +9,6 @@ project "GLFW"
 	{
         "include/GLFW/glfw3.h",
         "include/GLFW/glfw3native.h",
-
-        "src/glfw_config.h",
 
         "src/context.c",
         "src/init.c",
@@ -31,6 +28,8 @@ project "GLFW"
 	}
 
     filter "system:windows"
+        staticruntime "on"
+        systemversion "latest"
 
         files
         {
@@ -52,17 +51,20 @@ project "GLFW"
         }
 
     filter "system:linux"
+        staticruntime "on"
+        systemversion "latest"
 
         files
         {
-            "posix_module.c",
-            "posix_time.c",
-            "posix_thread.c",
-            "x11_init.c",
-            "x11_monitor.c",
-            "x11_window.c",
-            "xkb_unicode.c",
-            "glx_context.c"
+            "src/posix_module.c",
+            "src/posix_time.c",
+            "src/posix_thread.c",
+            
+            "src/x11_init.c",
+            "src/x11_monitor.c",
+            "src/x11_window.c",
+            "src/xkb_unicode.c",
+            "src/glx_context.c"
         }
 
         defines

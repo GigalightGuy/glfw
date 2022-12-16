@@ -1,12 +1,12 @@
 project "GLFW"
-	kind "StaticLib"
-	language "C"
+    kind "StaticLib"
+    language "C"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files
-	{
+    files
+    {
         "include/GLFW/glfw3.h",
         "include/GLFW/glfw3native.h",
 
@@ -25,7 +25,7 @@ project "GLFW"
         "src/null_monitor.c",
         "src/null_window.c",
         "src/null_joystick.c"
-	}
+    }
 
     filter "system:windows"
         staticruntime "on"
@@ -72,14 +72,14 @@ project "GLFW"
             "_GLFW_X11"
         }
 
-	filter "configurations:Debug"
+    filter "configurations:Debug"
         runtime "Debug"
-		symbols "on"
+        symbols "on"
 
-	filter "configurations:Release"
+    filter "configurations:Release"
         runtime "Release"
-		optimize "on"
+        optimize "on"
 
-	filter "configurations:Dist"
+    filter "configurations:Dist"
         runtime "Release"
-		optimize "on"
+        optimize "on"
